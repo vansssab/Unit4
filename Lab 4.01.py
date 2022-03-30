@@ -41,4 +41,4 @@ Can you think of an alternate way to do complete this task without any loop or c
 '''
 #de_vowel
 def de_vowel(a_string):
-    
+    pass
