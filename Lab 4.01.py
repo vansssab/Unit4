@@ -39,6 +39,30 @@ count_vowels takes in a string and returns an int representing the number of vow
 
 Can you think of an alternate way to do complete this task without any loop or counter, by making use of your new de_vowel() function instead?
 '''
+
+vowels = 'aeiou'
+
 #de_vowel
 def de_vowel(a_string):
-    pass
+    no_vowels = ''
+    for letter in a_string:
+        if letter not in vowels:
+            no_vowels += letter
+    return no_vowels
+
+#count_vowels
+def count_vowels(string):
+    count = 0
+
+    for letter in string:
+        if letter in vowels:
+            count += 1
+
+    return count
+
+new_string = input('Enter a string to devowel. ')
+print(f"There are {count_vowels(new_string)} vowels in your string.")
+print(f"The devoweled sentece: {de_vowel(new_string)}")
+
+
+
