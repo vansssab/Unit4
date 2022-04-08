@@ -71,7 +71,7 @@ def increasing_triangle():
 
     for i in range(1, 8):
         triangle_string += ' ' + str(i)
-        print(triangle_string)
+        print(triangle_string) 
 
 increasing_triangle()
 
@@ -84,6 +84,14 @@ increasing_triangle()
     - * - * - * -
     - * - * - * -
     - * - * - * -
+
+    
+#vertical stars and stripes
+def vertical_stripes_and_stars():
+    for i in range(7):
+        print('- * - * - * -')
+
+vertical_stripes_and_stars()
 
 5.  Use a function to create your own pattern or drawing. Some possible pattern ideas:
 
@@ -98,6 +106,7 @@ increasing_triangle()
         * - - - - - - *
         * - - - - - - *
         * * * * * * * *
+
     Write a function that will print the following balanced_triangle.
 
         1
@@ -120,7 +129,11 @@ increasing_triangle()
         *****
     
 '''
+#my own pattern
+def my_pattern():
+    print('* * * * * * * *')
+    for i in range(7):
+        print('* - - - - - - *')
+    print('* * * * * * * *')
 
-
-
-
+my_pattern()
