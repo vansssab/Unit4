@@ -113,6 +113,36 @@ def view_list(list):
         count += 1
     print(list_string)
 
+#Part 2
+
+def all_in_one():
+    combined_list = []
+
+    for list in shopping_lists:
+        for item in list:
+            combined_list.append(item)
+    
+    print(combined_list)
+
+def count_q_tips(list_choice):
+    q_tip_count = 0
+    for item in shopping_lists[list_choice]:
+        if item == 'q-tips':
+            q_tip_count += 1
+
+    print(f"There are {q_tip_count} q-tips in this list.")
+
+def drink_more_milk():
+    for list in shopping_lists:
+        if 'milk' not in list:
+            pass
+
+def if_you_give_a_moose_a_cooke():
+    for list in shopping_lists:
+        for item in list:
+            if item == 'milk':
+                item = 'milk and cookies'
+
 
 shopping_lists = [
     ['toothpaste', 'q-tips', 'milk'],
@@ -120,23 +150,33 @@ shopping_lists = [
     ['planner', 'pencils', 'q-tips']
 ] 
 
-user_choice = input("Choose 1 = update item, 2 = view item, or 3 = view list: ")
-if user_choice == '1':
-    list_choice = int(input("Which list number contains the item you want to change? ")) -1
-    item_choice = int(input("Which item number would you like to update? ")) -1
-    new_item = input("What item do you want to add? ")
+while True:
+    user_choice = input("Choose 1 = update item, 2 = view item, 3 = view list, 4 = combine all lists, 5 = count number of q-tips in a list, 'q' = quit: ")
+    if user_choice == '1':
+        list_choice = int(input("Which list number contains the item you want to change? ")) -1
+        item_choice = int(input("Which item number would you like to update? ")) -1
+        new_item = input("What item do you want to add? ")
 
-    update_item(list_choice, item_choice, new_item)
+        update_item(list_choice, item_choice, new_item)
 
-elif user_choice == '2':
-    list_choice = int(input("Which list number contains the item you want to view? ")) -1
-    item_choice = int(input("Which item number would you like to view? ")) -1
+    elif user_choice == '2':
+        list_choice = int(input("Which list number contains the item you want to view? ")) -1
+        item_choice = int(input("Which item number would you like to view? ")) -1
 
-    view_item(list_choice, item_choice)
+        view_item(list_choice, item_choice)
 
-elif user_choice == '3':
-    list_choice = int(input("Which list number do you want to view? ")) -1
+    elif user_choice == '3':
+        list_choice = int(input("Which list number do you want to view? ")) -1
 
-    view_list(list_choice)
+        view_list(list_choice)
 
-print(shopping_lists)
+    elif user_choice == '4':
+        all_in_one()
+
+    elif user_choice == '5':
+        list_choice = int(input("What list number contains the item you want to view? ")) -1
+        
+        count_q_tips(list_choice)
+
+    elif user_choice == 'q':
+        break
