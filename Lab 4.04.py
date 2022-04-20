@@ -143,6 +143,11 @@ def if_you_give_a_moose_a_cookie():
             if shopping_lists[i][j] == 'milk':
                 shopping_lists[i][j] = 'milk and cookies'
 
+#Extention
+def reverse():
+    for list in shopping_lists:
+        return list[::-1]
+
 shopping_lists = [
     ['toothpaste', 'q-tips', 'milk'],
     ['milk', 'candy', 'apples'],
@@ -158,6 +163,7 @@ while True:
     "5 = count number of q-tips in a list, \n"
     "6 = add milk in lists not containing milk, \n"
     "7 = add cookies to milk in lists, \n"
+    "8 = reverse the lists, \n"
     "'q' = quit: ")
 
     if user_choice == '1':
@@ -192,5 +198,11 @@ while True:
     elif user_choice == '7':
         if_you_give_a_moose_a_cookie()
 
+    elif user_choice == '8':
+        reverse()
+
     elif user_choice == 'q':
         break
+
+    else:
+        print('That is not an option. Try again')
