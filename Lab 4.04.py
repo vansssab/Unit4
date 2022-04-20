@@ -133,16 +133,15 @@ def count_q_tips(list_choice):
     print(f"There are {q_tip_count} q-tips in this list.")
 
 def drink_more_milk():
-    for list in shopping_lists:
-        if 'milk' not in list:
-            pass
+    for i in range(len(shopping_lists)):
+        if 'milk' not in shopping_lists[i]:
+            shopping_lists[i].append('milk')
 
-def if_you_give_a_moose_a_cooke():
-    for list in shopping_lists:
-        for item in list:
-            if item == 'milk':
-                item = 'milk and cookies'
-
+def if_you_give_a_moose_a_cookie():
+    for i in range(len(shopping_lists)):
+        for j in range(len(list)):
+            if shopping_lists[i][j] == 'milk':
+                shopping_lists[i][j] = 'milk and cookies'
 
 shopping_lists = [
     ['toothpaste', 'q-tips', 'milk'],
@@ -151,7 +150,16 @@ shopping_lists = [
 ] 
 
 while True:
-    user_choice = input("Choose 1 = update item, 2 = view item, 3 = view list, 4 = combine all lists, 5 = count number of q-tips in a list, 'q' = quit: ")
+    user_choice = input("Choose:\n" 
+    "1 = update item, \n"
+    "2 = view item, \n"
+    "3 = view list, \n"
+    "4 = combine all lists, \n"
+    "5 = count number of q-tips in a list, \n"
+    "6 = add milk in lists not containing milk, \n"
+    "7 = add cookies to milk in lists, \n"
+    "'q' = quit: ")
+
     if user_choice == '1':
         list_choice = int(input("Which list number contains the item you want to change? ")) -1
         item_choice = int(input("Which item number would you like to update? ")) -1
@@ -177,6 +185,12 @@ while True:
         list_choice = int(input("What list number contains the item you want to view? ")) -1
         
         count_q_tips(list_choice)
+
+    elif user_choice == '6':
+        drink_more_milk()
+
+    elif user_choice == '7':
+        if_you_give_a_moose_a_cookie()
 
     elif user_choice == 'q':
         break
