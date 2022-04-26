@@ -76,10 +76,17 @@ def turn(player):
     "--------- \n"
     f"{spots[6]} | {spots[7]} | {spots[8]}")
 
+def win():
+    pass
+
 print(f"{spots[0]} | {spots[1]} | {spots[2]} \n"
     "--------- \n"
     f"{spots[3]} | {spots[4]} | {spots[5]} \n"
     "--------- \n"
     f"{spots[6]} | {spots[7]} | {spots[8]}")
+
+
 print("Let's play Tic-Tac-Toe!")
 print("The first player will be X and the second player will be O.")
+while turns < 9:
+    pass
