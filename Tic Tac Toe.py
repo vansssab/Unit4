@@ -12,63 +12,63 @@ def turn(player):
                 print("That spot is already taken. Try again.")
                 turn('Player 1')
             else:
-                spots[0] = 'O'
+                spots[0] = 'X'
                 turns = turns + 1
         elif mark == '2':
             if spots[1] == 'X' or spots[1] == 'O':
                 print("That spot is already taken. Try again.")
                 turn('Player 1')
             else:
-                spots[1] = 'O'
+                spots[1] = 'X'
                 turns = turns + 1
         elif mark == '3':
             if spots[2] == 'X' or spots[2] == 'O':
                 print("That spot is already taken. Try again.")
                 turn('Player 1')
             else:
-                spots[2] = 'O'
+                spots[2] = 'X'
                 turns = turns + 1
         elif mark == '4':
             if spots[3] == 'X' or spots[3] == 'O':
                 print("That spot is already taken. Try again.")
                 turn('Player 1')
             else:
-                spots[3] = 'O'
+                spots[3] = 'X'
                 turns = turns + 1
         elif mark == '5':
             if spots[4] == 'X' or spots[4] == 'O':
                 print("That spot is already taken. Try again.")
                 turn('Player 1')
             else:
-                spots[4] = 'O'
+                spots[4] = 'X'
                 turns = turns + 1
         elif mark == '6':
             if spots[5] == 'X' or spots[5] == 'O':
                 print("That spot is already taken. Try again.")
                 turn('Player 1')
             else:
-                spots[5] = 'O'
+                spots[5] = 'X'
                 turns = turns + 1
         elif mark == '7':
             if spots[6] == 'X' or spots[6] == 'O':
                 print("That spot is already taken. Try again.")
                 turn('Player 1')
             else:
-                spots[6] = 'O'
+                spots[6] = 'X'
                 turns = turns + 1
         elif mark == '8':
             if spots[7] == 'X' or spots[7] == 'O':
                 print("That spot is already taken. Try again.")
                 turn('Player 1')
             else:
-                spots[7] = 'O'
+                spots[7] = 'X'
                 turns = turns + 1
         elif mark == '9':
             if spots[8] == 'X' or spots[8] == 'O':
                 print("That spot is already taken. Try again.")
                 turn('Player 1')
             else:
-                spots[8] = 'O'
+                spots[8] = 'X'
                 turns = turns + 1
         else:
             print('Sorry, that is not a spot on the board. Try again')
@@ -150,9 +150,19 @@ def turn(player):
     "--------- \n"
     f"{spots[6]} | {spots[7]} | {spots[8]}")
 
-def win():
+def check_for_win():
     #row win
     if spots[0] == spots[1] and spots[1] == spots[2] or spots[3] == spots[4] and spots[4] == spots[5] or spots[6] == spots[7] and spots[7] == spots[8]:
+        print("We have a winner!")
+        winner = True
+   
+    #column win
+    elif spots[0] == spots[3] and spots[3] == spots[6] or spots[1] == spots[4] and spots[4] == spots[7] or spots[2] == spots[5] and spots[5] == spots[8]:
+        print("We have a winner!")
+        winner = True
+    
+    #diagonal win
+    elif spots[0] == spots[4] and spots[4] == spots[8] or spots[2] == spots[4] and spots[4] == spots[6]:
         print("We have a winner!")
         winner = True
 
@@ -163,9 +173,14 @@ print(f"{spots[0]} | {spots[1]} | {spots[2]} \n"
     "--------- \n"
     f"{spots[6]} | {spots[7]} | {spots[8]}")
 
-
 print("Let's play Tic-Tac-Toe!")
 print("The first player will be X and the second player will be O.")
-while turns < 9:
+
+#game loop
+while winner == False:
     turn('Player 1')
     turn('Player 2')
+    check_for_win()
+    if turns == 9:
+        print("Its a draw.")
+        
