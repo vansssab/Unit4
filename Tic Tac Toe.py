@@ -1,6 +1,7 @@
 spots = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
 turns = 0
 winner = False
+game = True
 
 def turn(player):
     global turns
@@ -165,22 +166,34 @@ def check_for_win():
     elif spots[0] == spots[4] and spots[4] == spots[8] or spots[2] == spots[4] and spots[4] == spots[6]:
         print("We have a winner!")
         winner = True
+    
 
 
-print(f"{spots[0]} | {spots[1]} | {spots[2]} \n"
-    "--------- \n"
-    f"{spots[3]} | {spots[4]} | {spots[5]} \n"
-    "--------- \n"
-    f"{spots[6]} | {spots[7]} | {spots[8]}")
+while game == True:
+    print(f"{spots[0]} | {spots[1]} | {spots[2]} \n"
+        "--------- \n"
+        f"{spots[3]} | {spots[4]} | {spots[5]} \n"
+        "--------- \n"
+        f"{spots[6]} | {spots[7]} | {spots[8]}")
 
-print("Let's play Tic-Tac-Toe!")
-print("The first player will be X and the second player will be O.")
+    print("Let's play Tic-Tac-Toe!")
+    print("The first player will be X and the second player will be O.")
+    game = False
 
-#game loop
-while winner == False:
-    turn('Player 1')
-    turn('Player 2')
-    check_for_win()
-    if turns == 9:
-        print("Its a draw.")
-        
+    #game loop
+    while winner == False:
+        turn('Player 1')
+        turn('Player 2')
+        check_for_win()
+        if turns == 9:
+            print("Its a draw.")
+            play_again = input("Do you want to play again? (y/n) ")
+            if play_again == 'y':
+                game = True
+            elif play_again == 'n':
+                print("See you next time then! ")
+                break
+
+    #win
+    if winner == True:
+        pass
