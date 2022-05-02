@@ -1,6 +1,7 @@
 spots = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
 turns = 0
-winner = False
+winnerX = False
+winnerO = False
 game = True
 
 def turn(player):
@@ -142,20 +143,17 @@ def turn(player):
             else:
                 spots[8] = 'O'
                 turns = turns + 1
-        else:
-            print('Sorry, that is not a spot on the board. Try again')
-            turn('Player 2')
-    print(f"{spots[0]} | {spots[1]} | {spots[2]} \n"
-    "--------- \n"
-    f"{spots[3]} | {spots[4]} | {spots[5]} \n"
-    "--------- \n"
-    f"{spots[6]} | {spots[7]} | {spots[8]}")
-
 def check_for_win():
+    global winnerX
+    global winnerO
     #row win
     if spots[0] == spots[1] and spots[1] == spots[2] or spots[3] == spots[4] and spots[4] == spots[5] or spots[6] == spots[7] and spots[7] == spots[8]:
-        print("We have a winner!")
-        winner = True
+        if spots[0] == 'X' or spots[3] == 'X' or spots[6] == 'X':
+            print("We have a winner!")
+            winnerX = True
+        if spots[0] == 'O' or spots[3] == 'O' or spots[6] == 'O':
+            print("We have a winner!")
+            winnerO = True
    
     #column win
     elif spots[0] == spots[3] and spots[3] == spots[6] or spots[1] == spots[4] and spots[4] == spots[7] or spots[2] == spots[5] and spots[5] == spots[8]:
