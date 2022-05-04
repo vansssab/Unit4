@@ -157,17 +157,27 @@ def check_for_win():
    
     #column win
     elif spots[0] == spots[3] and spots[3] == spots[6] or spots[1] == spots[4] and spots[4] == spots[7] or spots[2] == spots[5] and spots[5] == spots[8]:
-        print("We have a winner!")
-        winner = True
+        if spots[0] == 'X' or spots[1] == 'X' or spots[2] == 'X':
+            print("We have a winner!")
+            winnerX = True
+        elif spots[0] == 'O' or spots[1] == 'O' or spots[2] == 'O':
+            print("We have a winner!")
+            winnerO = True
     
     #diagonal win
     elif spots[0] == spots[4] and spots[4] == spots[8] or spots[2] == spots[4] and spots[4] == spots[6]:
-        print("We have a winner!")
-        winner = True
+        if spots[0] == 'X' or spots[2] == 'X':
+            print("We have a winner!")
+            winnerX = True
+        elif spots[0] == 'O' or spots[2] == 'O':
+            print("We have a winner!")
+            winnerO = True
     
 
 
 while game == True:
+    spots = ['1', '2', '3', '4', '5', '6', '7', '8', '9']
+    turns = 0
     print(f"{spots[0]} | {spots[1]} | {spots[2]} \n"
         "--------- \n"
         f"{spots[3]} | {spots[4]} | {spots[5]} \n"
@@ -179,10 +189,43 @@ while game == True:
     game = False
 
     #game loop
-    while winner == False:
+    while winnerX == False and winnerO == False:
+        #player 1 turn
         turn('Player 1')
-        turn('Player 2')
+        print(f"{spots[0]} | {spots[1]} | {spots[2]} \n"
+        "--------- \n"
+        f"{spots[3]} | {spots[4]} | {spots[5]} \n"
+        "--------- \n"
+        f"{spots[6]} | {spots[7]} | {spots[8]}")
         check_for_win()
+        if winnerX == True:
+            print("Congrats Player 1! You won!")
+            play_again = input("Do you want to play again? (y/n) ")
+            if play_again == 'y':
+                game = True
+                winnerX = False
+            elif play_again == 'n':
+                print("See you next time then! ")
+                break
+
+        #player 2 turn
+        turn('Player 2')
+        print(f"{spots[0]} | {spots[1]} | {spots[2]} \n"
+        "--------- \n"
+        f"{spots[3]} | {spots[4]} | {spots[5]} \n"
+        "--------- \n"
+        f"{spots[6]} | {spots[7]} | {spots[8]}")
+        check_for_win()
+        if winnerO == True:
+            print("Congrats Player 2! You won!")
+            play_again = input("Do you want to play again? (y/n) ")
+            if play_again == 'y':
+                game = True
+                winnerO = False
+            elif play_again == 'n':
+                print("See you next time then! ")
+                break
+
         if turns == 9:
             print("Its a draw.")
             play_again = input("Do you want to play again? (y/n) ")
@@ -192,6 +235,5 @@ while game == True:
                 print("See you next time then! ")
                 break
 
-    #win
-    if winner == True:
-        pass
+    
+    
